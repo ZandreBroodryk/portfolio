@@ -2,7 +2,7 @@ import { ReactNode, SVGProps } from "react";
 
 type RustProps = SVGProps<SVGSVGElement>;
 export default function Rust({
-  viewBox = "0 0 144 144",
+  viewBox = "10 10 110 110",
   xmlns = "http://www.w3.org/2000/svg",
   className = "size-6",
   fill = "currentColor",
