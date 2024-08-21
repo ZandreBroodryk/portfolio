@@ -15,7 +15,7 @@ export default function SocialLink({
 }: SocialLinkProps): ReactNode {
   return (
     <Card>
-      <a className={className} href={href} target={target}>
+      <a className={className} href={href} target={target} {...rest}>
         {children}
       </a>
     </Card>

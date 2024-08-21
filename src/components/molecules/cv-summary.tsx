@@ -5,7 +5,7 @@ import CvEntry from "../atoms/cv-entry";
 export default function CvSummary(): ReactNode {
   return (
     <Card>
-      <div className="m-2 flex min-w-56 max-w-96 flex-col gap-2 h-96 hover:h-fit">
+      <div className="m-2 flex h-96 min-w-56 max-w-96 flex-col gap-2 hover:h-fit">
         <h2>Experience & Training</h2>
         <p className="text-neutral-500">5 years experience</p>
         <CvEntry

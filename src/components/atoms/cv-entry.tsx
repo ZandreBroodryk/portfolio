@@ -14,9 +14,11 @@ type CvEntryProps = {
 export default function CvEntry(props: CvEntryProps): ReactNode {
   return (
     <div className="flex items-center gap-2">
-      <div className="min-w-6">{props.type == "employment" ? <Employment /> : <Education />}</div>
+      <div className="min-w-6">
+        {props.type == "employment" ? <Employment /> : <Education />}
+      </div>
       <div>
-        <div className="flex items-center gap-2 justify-between">
+        <div className="flex items-center justify-between gap-2">
           <h3>{props.title}</h3>
           <div>
             <p className="text-neutral-500">{props.place}</p>
