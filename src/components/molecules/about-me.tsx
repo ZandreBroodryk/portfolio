@@ -8,7 +8,7 @@ export default function AboutMe(): ReactNode {
       <div className="m-2 flex max-w-96 flex-col gap-4">
         <div className="flex items-center gap-2">
           <Image
-            src={"/me.jpg"}
+            src={"/profile-picture.jpg"}
             height={50}
             width={50}
             alt="Me"
