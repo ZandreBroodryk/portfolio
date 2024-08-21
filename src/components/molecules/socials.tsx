@@ -6,15 +6,15 @@ import SocialLink from "./social-link";
 
 export default function Socials(): ReactNode {
   return (
-    <div className="flex h-fit w-fit min-w-56 flex-1 flex-wrap gap-2">
+    <div className="flex h-fit w-fit min-w-56 flex-1 flex-wrap gap-5">
       <SocialLink href="https://www.linkedin.com/in/zandre-broodryk-dev/">
-        <LinkedIn className="size-20" />
+        <LinkedIn className="size-24" />
       </SocialLink>
       <SocialLink href="https://github.com/ZandreBroodryk">
-        <GitHub className="size-20" />
+        <GitHub className="size-24" />
       </SocialLink>
       <SocialLink href="mailto:z.broodryk@gmail.com">
-        <Mail className="size-20" />
+        <Mail className="size-24" />
       </SocialLink>
     </div>
   );
