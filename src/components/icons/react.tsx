@@ -21,7 +21,7 @@ export default function ReactLogo({
     >
       <title>React Logo</title>
       <circle cx="0" cy="0" r="2.05" />
-      <g stroke={stroke} stroke-width="1" fill="none">
+      <g stroke={stroke} fill="none">
         <ellipse rx="11" ry="4.2" />
         <ellipse rx="11" ry="4.2" transform="rotate(60)" />
         <ellipse rx="11" ry="4.2" transform="rotate(120)" />
