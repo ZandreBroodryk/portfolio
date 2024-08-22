@@ -14,7 +14,7 @@ export default function AboutMe(): ReactNode {
             alt="Me"
             className="size-14 rounded-full"
           />
-          <h1 className="bg-gradient-to-r from-indigo-700 to-fuchsia-700 bg-clip-text text-transparent">
+          <h1 className="bg-gradient-to-r from-amber-700 to-green-700 bg-clip-text text-transparent">
             Zandré Broodryk
           </h1>
         </div>

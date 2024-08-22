@@ -10,7 +10,11 @@ const config: Config = {
     extend: {
       backgroundImage: {
         "stars": "url('/cover.jpg')",
+        "cozy": "url('/cozy-city.jpg')",
       },
+      backdropBlur: {
+        xs: '2px'
+      }
     },
   },
   plugins: [],
