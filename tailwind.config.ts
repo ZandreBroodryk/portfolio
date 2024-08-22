@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        "cubes": "url('/cover.jpg')",
+        "stars": "url('/cover.jpg')",
       },
     },
   },
