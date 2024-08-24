@@ -1,12 +1,14 @@
-import { ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 import Card from "../atoms/card";
 import ReactSyntaxHighlighter from "react-syntax-highlighter";
 import { hybrid } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import Image from "next/image";
 import CopyToClipBoard from "../atoms/copy-to-clipboard-button";
+import compareStrings from "@/lib/string-comparer";
 
 type CodeSnippetProps = {
   code: string;
+  compareCode?: string;
   language:
     | "rust"
     | "typescript"
@@ -23,8 +25,19 @@ export default function CodeSnippet({
   code,
   language,
   fileName,
+  compareCode,
 }: CodeSnippetProps): ReactNode {
   const strokeWidthOnIcons = 0.4;
+  let addedLines: number[] = [];
+  let removedLines: number[] = [];
+  let codeDisplay = code;
+  if (compareCode) {
+    const { addedLineNumbers, removedLineNumbers, combinedString } =
+      compareStrings(compareCode, code);
+    addedLines = addedLineNumbers;
+    removedLines = removedLineNumbers;
+    codeDisplay = combinedString;
+  }
 
   return (
     <Card>
@@ -82,8 +95,17 @@ export default function CodeSnippet({
             style={hybrid}
             showLineNumbers
             wrapLongLines
+            lineProps={(lineNumber) => {
+              let style: CSSProperties = { display: "block" };
+              if (addedLines.includes(lineNumber)) {
+                style.backgroundColor = "rgba(0, 200, 20, 0.3)";
+              } else if (removedLines.includes(lineNumber)) {
+                style.backgroundColor = "rgba(200, 0, 0, 0.3)";
+              }
+              return { style };
+            }}
           >
-            {code}
+            {codeDisplay}
           </ReactSyntaxHighlighter>
         </div>
       </div>

@@ -41,6 +41,7 @@ export default function FirstSetupOfProject(): ReactNode {
         language="json"
         fileName="package.json"
         code={packageJsonInstalled}
+        compareCode={packageJsonInit}
       />
       <p>
         I like to do as much config inside my <code>package.json</code> file as
@@ -52,6 +53,7 @@ export default function FirstSetupOfProject(): ReactNode {
         language="json"
         fileName="package.json"
         code={packageJsonFinal}
+        compareCode={packageJsonInit}
       />
       <CodeSnippet
         language="json"
@@ -102,7 +104,7 @@ const packageJsonInstalled = `{
   "name": "my-awesome-app",
   "version": "0.1.0",
   "private": true,
-   "scripts": {
+  "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -131,6 +133,7 @@ const packageJsonInstalled = `{
     "eslint-plugin-prettier": "5.0.0",
     "prettier-plugin-tailwindcss": "0.5.4"
   }
+}
 `;
 
 const packageJsonFinal = `{
