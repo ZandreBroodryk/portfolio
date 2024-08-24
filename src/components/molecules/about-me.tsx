@@ -8,8 +8,8 @@ export default function AboutMe(): ReactNode {
     <Card>
       <div className="m-2 flex max-w-96 flex-col gap-4">
         <div className="flex items-center gap-2">
-          <div className="relative flex size-16 items-center">
-            <SaFlag className="size-16" round />
+          <div className="relative flex size-[58px] items-center">
+            <SaFlag className="size-[58px]" round />
             <Image
               src={"/profile-picture.jpg"}
               height={50}

@@ -3,6 +3,7 @@ import Card from "../atoms/card";
 import ReactSyntaxHighlighter from "react-syntax-highlighter";
 import { hybrid } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import Image from "next/image";
+import CopyToClipBoard from "../atoms/copy-to-clipboard-button";
 
 type CodeSnippetProps = {
   code: string;
@@ -72,14 +73,19 @@ export default function CodeSnippet({
             </div>
           </div>
         )}
-        <ReactSyntaxHighlighter
-          language={language}
-          style={hybrid}
-          showLineNumbers
-          wrapLongLines
-        >
-          {code}
-        </ReactSyntaxHighlighter>
+        <div className="relative max-w-[90vw] overflow-auto">
+          <div className="absolute right-2 top-2">
+            <CopyToClipBoard text={code} />
+          </div>
+          <ReactSyntaxHighlighter
+            language={language}
+            style={hybrid}
+            showLineNumbers
+            wrapLongLines
+          >
+            {code}
+          </ReactSyntaxHighlighter>
+        </div>
       </div>
     </Card>
   );
