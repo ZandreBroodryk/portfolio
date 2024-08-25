@@ -5,19 +5,12 @@ import { hybrid } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import Image from "next/image";
 import CopyToClipBoard from "../atoms/copy-to-clipboard-button";
 import compareStrings from "@/lib/string-comparer";
+import { supporedLanguages } from "@/lib/types";
 
 type CodeSnippetProps = {
   code: string;
   compareCode?: string;
-  language:
-    | "rust"
-    | "typescript"
-    | "csharp"
-    | "bash"
-    | "dockerfile"
-    | "json"
-    | "markdown"
-    | "pgsql";
+  language: supporedLanguages;
   fileName?: string;
 };
 
