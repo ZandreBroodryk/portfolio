@@ -8,10 +8,10 @@ export default function Page(): ReactNode {
       <h2>Some blog entries will be added here over time</h2>
       <ol className="list-decimal">
         <li>
-          <Link href={"default"}>Hard coded blog</Link>
+          <Link href={"blog/default"}>Hard coded blog</Link>
         </li>
         <li>
-          <Link href={"markdown"}>Generated from markdown</Link>
+          <Link href={"blog/markdown"}>Generated from markdown</Link>
         </li>
       </ol>
     </div>
