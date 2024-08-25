@@ -6,7 +6,7 @@ type StringDiffResult = {
 
 let addedLineNumbers: number[] = [];
 let removeLineNumbers: number[] = [];
-const linesToDisplay: string[] = [];
+let linesToDisplay: string[] = [];
 let referenceLineIndex = 0;
 let newLineIndex = 0;
 
@@ -14,6 +14,11 @@ export default function compareStrings(
   referenceString: string,
   newString: string,
 ): StringDiffResult {
+  addedLineNumbers = [];
+  removeLineNumbers = [];
+  linesToDisplay = [];
+  referenceLineIndex = 0;
+  newLineIndex = 0;
   const oldLines = referenceString.split("\n");
   const newLines = newString.split("\n");
 
