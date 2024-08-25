@@ -14,11 +14,18 @@ export default function compareStrings(
   referenceString: string,
   newString: string,
 ): StringDiffResult {
-  addedLineNumbers = [];
-  removeLineNumbers = [];
-  linesToDisplay = [];
-  referenceLineIndex = 0;
-  newLineIndex = 0;
+  initializeValues();
+
+  calculateDiff(referenceString, newString);
+
+  return {
+    combinedString: linesToDisplay.join("\n"),
+    addedLineNumbers: addedLineNumbers,
+    removedLineNumbers: removeLineNumbers,
+  };
+}
+
+function calculateDiff(referenceString: string, newString: string) {
   const oldLines = referenceString.split("\n");
   const newLines = newString.split("\n");
 
@@ -57,11 +64,14 @@ export default function compareStrings(
 
     continue;
   }
-  return {
-    combinedString: linesToDisplay.join("\n"),
-    addedLineNumbers: addedLineNumbers,
-    removedLineNumbers: removeLineNumbers,
-  };
+}
+
+function initializeValues() {
+  addedLineNumbers = [];
+  removeLineNumbers = [];
+  linesToDisplay = [];
+  referenceLineIndex = 0;
+  newLineIndex = 0;
 }
 
 function addLineToResult(line: string) {

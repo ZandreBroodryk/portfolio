@@ -10,10 +10,7 @@ export default function RootNav(): ReactNode {
           <Link className="hover:font-bold hover:text-white" href="/">
             Home
           </Link>
-          <Link
-            className="hover:font-bold hover:text-white"
-            href="/blog/default"
-          >
+          <Link className="hover:font-bold hover:text-white" href="/blog">
             Blog
           </Link>
         </div>

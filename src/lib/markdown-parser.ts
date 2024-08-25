@@ -25,24 +25,25 @@ async function splitMarkdown(markdown: string) {
   let isInReferenceBlock = false;
 
   const result: splitMarkdownResult[] = [];
-  for (let index = 0; index < markdownLines.length; index++) {
-    const line = markdownLines[index];
-
+  const handleReferenceBlock = (line: string) => {
     if (line.startsWith("```reference")) {
       isInReferenceBlock = true;
-      continue;
+      return true;
     }
 
     if (isInReferenceBlock) {
       if (line === "```") {
         isInReferenceBlock = false;
-        continue;
+        return true;
       }
       result[result.length - 1].referenceCode ??= "";
       result[result.length - 1].referenceCode += `${line}\n`;
-      continue;
+      return true;
     }
+    return false;
+  };
 
+  const handleCodeBlock = (line: string) => {
     if (line.startsWith("```") && !isInCodeBlock && !isInReferenceBlock) {
       isInCodeBlock = true;
       const [language, filename] = line.slice(3).split(" ");
@@ -52,18 +53,21 @@ async function splitMarkdown(markdown: string) {
         language: language as supporedLanguages,
         value: "",
       });
-      continue;
+      return true;
     }
 
     if (isInCodeBlock) {
       if (line === "```") {
         isInCodeBlock = false;
-        continue;
+        return true;
       }
       result[result.length - 1].value += `${line}\n`;
-      continue;
+      return true;
     }
+    return false;
+  };
 
+  const handleNonCodeBlock = (line: string) => {
     let lastEntry: splitMarkdownResult = result.at(result.length - 1) ?? {
       type: "markdown",
       value: "",
@@ -81,8 +85,28 @@ async function splitMarkdown(markdown: string) {
     }
 
     lastEntry.value += `${line}\n`;
+  };
+
+  for (let index = 0; index < markdownLines.length; index++) {
+    const line = markdownLines[index];
+
+    if (handleReferenceBlock(line)) {
+      continue;
+    }
+
+    if (handleCodeBlock(line)) {
+      continue;
+    }
+
+    handleNonCodeBlock(line);
   }
 
+  await parseMarkdownSegments(result);
+
+  return result;
+}
+
+async function parseMarkdownSegments(result: splitMarkdownResult[]) {
   for (let index = 0; index < result.length; index++) {
     const entry = result[index];
     if (entry.type === "markdown") {
@@ -90,13 +114,8 @@ async function splitMarkdown(markdown: string) {
         .use(targetBlank)
         .use(remarkRehype)
         .use(rehypeStringify)
-        // .use(html)
         .process(entry.value);
       entry.value = innerHtml.toString();
-
-      // console.log(entry.value);
     }
   }
-
-  return result;
 }

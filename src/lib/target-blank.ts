@@ -7,6 +7,7 @@ interface Element extends Node {
   data: {
     hProperties?: {
       target?: string;
+      className?: string;
     };
   };
 }
@@ -17,6 +18,7 @@ const targetBlank: Plugin = () => {
       node.data ??= {};
       node.data.hProperties ??= {};
       node.data.hProperties.target = "_blank";
+      node.data.hProperties.className = "text-neutral-400";
     });
   };
 };
