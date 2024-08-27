@@ -1,11 +1,22 @@
 import markdownToHtml from "@/lib/markdown-parser";
 import { ReactNode } from "react";
 import CodeSnippet from "@/components/molecules/code-snippet";
+import { fetchApi } from "@/lib/http-client";
+import { detailedBlog } from "@/lib/api/types";
+import Oops from "@/components/atoms/oops";
 
-export default async function MarkdownPage(): Promise<ReactNode> {
-  const apiResult = await fetch("api/id");
+export default async function MarkdownPage({
+  params,
+}: {
+  params: { id: number };
+}): Promise<ReactNode> {
+  const apiResult = await fetchApi(`blogs/${params.id}`);
   const jsonBody = await apiResult.json();
-  const parts = await markdownToHtml(jsonBody.markdown);
+  const validation = detailedBlog.safeParse(jsonBody);
+  if (!validation.success) {
+    return <Oops />;
+  }
+  const parts = await markdownToHtml(validation.data.content);
   return (
     <>
       {parts.map((part, index) =>

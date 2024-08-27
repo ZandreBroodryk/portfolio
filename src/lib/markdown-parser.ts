@@ -10,7 +10,7 @@ export default async function markdownToHtml(markdown: string) {
   return parts;
 }
 
-type splitMarkdownResult = {
+export type splitMarkdownResult = {
   type: "code" | "markdown";
   value: string;
   language?: supporedLanguages;
