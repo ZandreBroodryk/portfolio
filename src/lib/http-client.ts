@@ -53,6 +53,10 @@ export function storeToken(token: string) {
   localStorage.setItem("bearer", token);
 }
 
-export function remvoeToken() {
+export function hasToken() {
+  return !!localStorage.getItem("bearer");
+}
+
+export function removeToken() {
   localStorage.removeItem("bearer");
 }
