@@ -19,13 +19,13 @@ export default function Button({
   ...props
 }: ButtonProps): JSX.Element {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const onClickLoading = (
+  const onClickLoading = async (
     event: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
   ) => {
     if (onClick) {
       try {
         setIsLoading(true);
-        onClick(event);
+        await onClick(event);
       } catch (error) {
         setIsLoading(false);
         throw error;
