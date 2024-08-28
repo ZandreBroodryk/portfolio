@@ -1,4 +1,5 @@
 "use client";
+import { useAuthContext } from "@/app/context/auth.context";
 import { loginRequestType } from "@/lib/api/types";
 import { fetchApi, removeToken, storeToken } from "@/lib/http-client";
 import { useState } from "react";
@@ -6,6 +7,8 @@ import { useState } from "react";
 export default function LoginForm(): JSX.Element {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
+  const onSuccess = useAuthContext();
 
   const submit = async () => {
     const loginRequest: loginRequestType = {
@@ -18,6 +21,7 @@ export default function LoginForm(): JSX.Element {
     if (result.status == 200) {
       const jwtToken = await result.json();
       storeToken(jwtToken);
+      onSuccess();
       return;
     }
     removeToken();
