@@ -51,15 +51,19 @@ function calculateDiff(referenceString: string, newString: string) {
       continue;
     }
 
-    const isNewLine = !oldLines.includes(newLine!, referenceLineIndex - 1);
+    const isNewLine = !oldLines.includes(newLine!, referenceLineIndex);
 
-    const isRemovedLine = !newLines.includes(oldLine!, newLineIndex - 1);
+    const isRemovedLine = !newLines.includes(oldLine!, newLineIndex);
 
     if (isRemovedLine) {
       addRemovedLineToResult(oldLine!);
     }
     if (isNewLine) {
       addNewLineToResult(newLine!);
+    }
+
+    if (!isRemovedLine && !isNewLine) {
+      addRemovedLineToResult(oldLine!);
     }
 
     continue;
