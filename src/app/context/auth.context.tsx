@@ -4,7 +4,7 @@ import LoginForm from "@/components/molecules/login-form";
 import { ComponentWithChildren } from "@/components/types/shared";
 import { hasToken } from "@/lib/http-client";
 import { createContext, useContext, useEffect, useState } from "react";
-type AuthContextType = () => void;
+type AuthContextType = (loggedInValue: boolean) => void;
 
 const AuthContext = createContext<AuthContextType>(() => {});
 export default function AuthProvider({
@@ -17,7 +17,7 @@ export default function AuthProvider({
   }, []);
 
   return (
-    <AuthContext.Provider value={() => setIsLoggedIn(true)}>
+    <AuthContext.Provider value={setIsLoggedIn}>
       {isLoggedIn ? children : <LoginForm />}
     </AuthContext.Provider>
   );

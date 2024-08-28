@@ -3,12 +3,13 @@ import { useAuthContext } from "@/app/context/auth.context";
 import { loginRequestType } from "@/lib/api/types";
 import { fetchApi, removeToken, storeToken } from "@/lib/http-client";
 import { useState } from "react";
+import Button from "../atoms/button";
 
 export default function LoginForm(): JSX.Element {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const onSuccess = useAuthContext();
+  const setIsLoggedIn = useAuthContext();
 
   const submit = async () => {
     const loginRequest: loginRequestType = {
@@ -21,7 +22,7 @@ export default function LoginForm(): JSX.Element {
     if (result.status == 200) {
       const jwtToken = await result.json();
       storeToken(jwtToken);
-      onSuccess();
+      setIsLoggedIn(true);
       return;
     }
     removeToken();
@@ -32,7 +33,7 @@ export default function LoginForm(): JSX.Element {
       <label htmlFor="username">username:</label>
       <input
         id="username"
-        className="rounded-md bg-neutral-700"
+        className="rounded-md bg-neutral-700 px-1"
         name="username"
         onChange={(event) => setUsername(event.target.value)}
       />
@@ -40,18 +41,18 @@ export default function LoginForm(): JSX.Element {
       <label htmlFor="username">password:</label>
       <input
         id="username"
-        className="rounded-md bg-neutral-700"
+        className="rounded-md bg-neutral-700 px-1"
         name="username"
         type="password"
         onChange={(event) => setPassword(event.target.value)}
       />
-      <button
+      <Button
         type="button"
         onClick={submit}
         className="rounded-md bg-neutral-500"
       >
         Login
-      </button>
+      </Button>
     </form>
   );
 }
