@@ -22,7 +22,7 @@ export default async function MarkdownPage({
       {parts.map((part, index) =>
         part.type === "markdown" ? (
           <div
-            className="flex w-full flex-col"
+            className="flex w-full flex-col gap-4"
             key={index}
             dangerouslySetInnerHTML={{ __html: part.value }}
           />

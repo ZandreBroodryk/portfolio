@@ -1,6 +1,5 @@
 import { ComponentWithChildren } from "@/components/types/shared";
 import { ReactNode } from "react";
-import "./blog.css";
 
 export default function BlogLayout({
   children,

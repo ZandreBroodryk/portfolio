@@ -10,7 +10,7 @@ export default async function BlogPosts(): Promise<
   const validation = blogSummariesResponse.safeParse(await result.json());
   if (validation.success) {
     return validation.data.map((blog) => (
-      <li key={blog.id}>
+      <li key={blog.id} className="my-1">
         <Link href={`blog/${blog.id}`}>{blog.title}</Link>
       </li>
     ));
