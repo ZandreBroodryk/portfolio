@@ -24,8 +24,12 @@ export default function AboutMe(): ReactNode {
             Zandré Broodryk
           </h1>
         </div>
-        <p>I am a chemical engineer turned software engineer and loving it!</p>
-        <p>Currently fullstack software engineer for FuelX</p>
+        <p>
+          A self-taught back-end developer with a chemical engineering
+          background, I bring a unique problem-solving approach to building
+          robust and efficient systems.
+        </p>
+        <p> By day, I’m the lead developer at FuelX.</p>
       </div>
     </Card>
   );
