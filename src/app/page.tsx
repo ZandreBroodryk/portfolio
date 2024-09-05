@@ -11,7 +11,7 @@ export default function Home() {
           <AboutMe />
           <Socials />
           <MySkills />
-          <div className="md:-mt-16">
+          <div className="md:-mt-28">
             <CvSummary />
           </div>
         </div>
