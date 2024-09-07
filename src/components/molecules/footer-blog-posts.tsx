@@ -18,7 +18,10 @@ export default async function FooterBlogPosts({
       .filter((blog) => blog.id != excluding)
       .map((blog) => (
         <li key={blog.id} className="m-1 py-2">
-          <Link href={`blog/${blog.id}`} className="flex rounded-md border p-2">
+          <Link
+            href={`/blog/${blog.id}`}
+            className="flex rounded-md border p-2"
+          >
             {blog.id}
             {blog.title}
           </Link>

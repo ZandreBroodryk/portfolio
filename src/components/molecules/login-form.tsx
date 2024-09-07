@@ -40,7 +40,7 @@ export default function LoginForm(): JSX.Element {
 
       <label htmlFor="username">password:</label>
       <input
-        id="username"
+        id="password"
         className="rounded-md bg-neutral-700 px-1"
         name="username"
         type="password"

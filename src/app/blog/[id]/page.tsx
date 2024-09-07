@@ -22,7 +22,7 @@ export default async function MarkdownPage({
   const parts = await markdownToHtml(validation.data.content);
   return (
     <>
-      <BackButton label="Back to all posts" />
+      <BackButton label="Back to all posts" route="/blog" />
       {parts.map((part, index) =>
         part.type === "markdown" ? (
           <div

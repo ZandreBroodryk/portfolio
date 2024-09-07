@@ -1,4 +1,11 @@
+import { jwtDecode } from "jwt-decode";
+
 const serverUrl = process.env.NEXT_PUBLIC_API_URL!;
+
+type JwtPayload = {
+  exp: number;
+};
+
 export function fetchApi(
   route: string,
   method: "GET" | "POST" | "PUT" | "DELETE" = "GET",
@@ -54,7 +61,22 @@ export function storeToken(token: string) {
 }
 
 export function hasToken() {
-  return !!localStorage.getItem("bearer");
+  const bearerToken = localStorage.getItem("bearer");
+  if (!bearerToken) {
+    return false;
+  }
+
+  const decoded = jwtDecode<JwtPayload>(bearerToken);
+
+  const currentTimeInSeconds = Math.floor(Date.now() / 1000);
+
+  const isStillValid = decoded.exp > currentTimeInSeconds;
+
+  if (!isStillValid) {
+    removeToken();
+  }
+
+  return isStillValid;
 }
 
 export function removeToken() {

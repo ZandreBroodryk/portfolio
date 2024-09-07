@@ -5,15 +5,23 @@ import Button from "./button";
 
 type BackButtonProps = {
   label: string;
+  route?: string;
 };
 
-export default function BackButton({ label }: BackButtonProps): JSX.Element {
+export default function BackButton({
+  label,
+  route,
+}: BackButtonProps): JSX.Element {
   const router = useRouter();
+  const goBack = () => {
+    if (route) {
+      router.push(route);
+      return;
+    }
+    router.back();
+  };
   return (
-    <Button
-      onClick={router.back}
-      className="mb-8 flex items-center hover:underline"
-    >
+    <Button onClick={goBack} className="mb-8 flex items-center hover:underline">
       <ArrowLeft className="mr-2 size-4" /> {label}
     </Button>
   );
