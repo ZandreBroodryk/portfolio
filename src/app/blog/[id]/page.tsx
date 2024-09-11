@@ -23,7 +23,7 @@ export default async function MarkdownPage({
   return (
     <>
       <BackButton label="Back to all posts" route="/blog" />
-      <div className="mx-auto mb-10 flex flex-col">
+      <div className="mx-auto mb-10 flex flex-col gap-3">
         {parts.map((part, index) =>
           part.type === "markdown" ? (
             <div
