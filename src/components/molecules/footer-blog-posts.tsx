@@ -22,7 +22,6 @@ export default async function FooterBlogPosts({
             href={`/blog/${blog.id}`}
             className="flex rounded-md border p-2"
           >
-            {blog.id}
             {blog.title}
           </Link>
         </li>

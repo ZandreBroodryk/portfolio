@@ -1,6 +1,8 @@
 "use-client";
 
-import markdownToHtml, { splitMarkdownResult } from "@/lib/markdown-parser";
+import markdownToHtml, {
+  splitMarkdownResult,
+} from "@/lib/markdown/markdown-parser";
 import { useEffect, useState } from "react";
 import Button from "../atoms/button";
 import CodeSnippet from "./code-snippet";

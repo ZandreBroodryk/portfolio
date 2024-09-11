@@ -1,8 +1,9 @@
 import { remark } from "remark";
-import { supporedLanguages } from "./types";
+import { supporedLanguages } from "../types";
 import targetBlank from "./target-blank";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
+import headingStyle from "./heading-style";
 
 export default async function markdownToHtml(markdown: string) {
   const parts = await splitMarkdown(markdown);
@@ -111,6 +112,7 @@ async function parseMarkdownSegments(result: splitMarkdownResult[]) {
     const entry = result[index];
     if (entry.type === "markdown") {
       const innerHtml = await remark()
+        .use(headingStyle)
         .use(targetBlank)
         .use(remarkRehype)
         .use(rehypeStringify)

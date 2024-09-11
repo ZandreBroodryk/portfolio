@@ -34,7 +34,7 @@ export default function CodeSnippet({
 
   return (
     <Card>
-      <div className="flex flex-col md:min-w-[600px]">
+      <div className="flex flex-col md:w-[600px]">
         <div className="mx-2 flex flex-row justify-between py-2">
           <Image src="/vs-code-icon.png" alt="Code" height={24} width={24} />
           <div className="flex h-6 w-24 items-center gap-4 self-center py-1">

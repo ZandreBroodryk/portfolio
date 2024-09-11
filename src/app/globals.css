@@ -37,3 +37,7 @@ blockquote {
   border-radius: 0.5rem;
   font-style: oblique;
 }
+
+.blog-title {
+  @apply text-6xl text-green-500
+}

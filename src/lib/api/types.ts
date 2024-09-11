@@ -10,6 +10,8 @@ export type loginRequestType = TypeOf<typeof loginRequest>;
 export const blogSummary = z.object({
   id: z.number().int().positive(),
   title: z.string(),
+  createdAt: z.string().date(),
+  wordCount: z.number().int().positive(),
 });
 
 export const blogSummariesResponse = blogSummary.array();
