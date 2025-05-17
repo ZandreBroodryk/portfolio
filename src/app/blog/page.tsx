@@ -1,17 +1,15 @@
-import Loader from "@/components/atoms/loader";
-import BlogPosts from "@/components/molecules/blog-posts";
-import { Suspense } from "react";
+import SectionHeading from "@/components/section-heading";
+import Link from "next/link";
 
-export default function Page(): JSX.Element {
+export default function PortfolioPage() {
   return (
-    <div className="mx-auto flex flex-col p-4">
-      <h1 className="text-green-500">Welcome to my Blog</h1>
-      <h2>Latest articles</h2>
-      <ol className="my-2 list-none">
-        <Suspense fallback={<Loader />}>
-          <BlogPosts />
-        </Suspense>
-      </ol>
-    </div>
+    <>
+      <SectionHeading text="Blog" />
+
+      <p>I&apos;ll scribble some thoughts down here from time to time</p>
+      <Link href={"/blog/code-snippet"} className="text-lime-500">
+        Test
+      </Link>
+    </>
   );
 }
