@@ -38,9 +38,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${ubuntu.variable} ${ubuntuMono.variable} ${ubuntu.className} bg-[url('/cozy-city.jpg')] bg-cover bg-fixed antialiased before:absolute before:top-0 before:right-0 before:bottom-0 before:left-0 before:backdrop-blur-xs`}
+        className={`${ubuntu.variable} ${ubuntuMono.variable} ${ubuntu.className} bg-[url('/cozy-city.jpg')] bg-cover bg-fixed antialiased before:absolute before:top-0 before:right-0 before:bottom-0 before:left-0 before:bg-neutral-800 before:backdrop-blur-xs`}
       >
-        <main className="overflow-auto sm:max-h-screen">
+        <main className="sm:max-h-screen sm:overflow-auto">
           <AboutMe
             name="Zandré Broodryk"
             profilePictureUrl="/avatar.jpg"
