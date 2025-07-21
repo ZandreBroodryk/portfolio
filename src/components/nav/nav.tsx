@@ -7,7 +7,6 @@ export default function Nav() {
       <NavItem href="/experience">Experience</NavItem>
       <NavItem href="/portfolio">Portfolio</NavItem>
       <NavItem href="/blog">Blog</NavItem>
-      <NavItem href="/contact">Contact</NavItem>
     </nav>
   );
 }
